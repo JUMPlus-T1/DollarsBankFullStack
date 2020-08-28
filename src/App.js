@@ -6,12 +6,16 @@ import {Contact} from './Contact';
 import {NoMatch} from './NoMatch';
 import {Layout} from './components/Layout';
 import './App.css';
+import { NavigationBar } from './components/NavigationBar';
+import {Jumbotron} from './components/Jumbotron';
 
 class App extends Component {
     render() {
       return (
         /*React.Fragment serves as a wrapper to prevent multiple divs*/
         <React.Fragment>
+          <NavigationBar/>
+          <Jumbotron/>
           <Layout>
             <Router>
               <Switch>
