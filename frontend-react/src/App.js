@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import TodoComponent from './components/TodoComponent';
+import ImageStrip from './components/ImageStrip';
 
 function App() {
   return (
     <div className="App">
-      <TodoComponent />
+      <ImageStrip />
     </div>
   );
 }

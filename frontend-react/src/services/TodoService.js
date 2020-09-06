@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TODOS_REST_API_URL = 'http://localhost:8080/api/todos';
+const TODOS_REST_API_URL = 'http://localhost:8080/example/todos';
 
 class TodoService {
 
