@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AccountService from '../services/AccountService'
 
 const Styles = styled.div`
 .login-card {
@@ -12,18 +13,50 @@ const Styles = styled.div`
 `;
 
 class Login extends React.Component {
+    
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+    
+
+    handleEmailChange = event => {
+        this.setState({ email: event.target.value });
+    }
+    
+    handlePasswordChange = event => {
+        this.setState({ password: event.target.value });
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        const account = { 
+            email: this.state.email,
+            password: this.state.password
+        };
+        console.log(account);
+        AccountService.getAccount(account);
+
+    }
 
     render() {
         return (
             <Styles>
                 <div>
-                    <form >
+                    <form onSubmit={this.handleSubmit}>
                         <div>  
                             <label htmlFor="exampleInputEmail1">Email address</label>
                                 <input 
                                     type="email" 
                                     className="form-control" 
-                                    id="email" 
+                                    id="email"
+                                    name="email"
+                                    onChange={this.handleEmailChange}
                                     aria-describedby="emailHelp" 
                                     placeholder="Enter email"/>
                                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -33,6 +66,8 @@ class Login extends React.Component {
                                 <input type="password" 
                                     className="form-control" 
                                     id="password" 
+                                    name="password"
+                                    onChange={this.handlePasswordChange}
                                     placeholder="Password"/>
                         </div>
                         <div className="form-check"></div>

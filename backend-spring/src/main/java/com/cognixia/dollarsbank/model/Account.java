@@ -72,6 +72,7 @@ public class Account {
 			", name='" + name + '\'' +
 			", address='" + address + '\'' +
 			", phone='" + phone + '\'' +
+			", email='" + email + '\'' +
 			", password='" + password + '\'' +
 			", balance=" + balance +
 			", history='" + history + '\'' +
