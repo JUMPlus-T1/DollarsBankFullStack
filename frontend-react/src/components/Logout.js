@@ -11,7 +11,7 @@ class Logout extends React.Component {
     }
 
     componentDidMount() {
-        this.timeout = setTimeout(() => window.location.reload(false), 3000);
+        this.timeout = setTimeout(() => window.location.reload(false), 2000);
     }
     
     componentWillUnmount() {

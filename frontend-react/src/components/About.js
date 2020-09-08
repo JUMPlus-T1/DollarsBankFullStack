@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageStrip from './ImageStrip';
 
 class About extends React.Component {
     
@@ -13,6 +14,7 @@ class About extends React.Component {
     render() {
         return (
             <div>
+                <ImageStrip />
                 <h1>So you don't have to worry much, okay?</h1>
             </div>
         )

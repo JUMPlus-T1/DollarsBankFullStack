@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
-import ImageStrip from './components/ImageStrip';
 import Home from './components/user-menu/Home';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -15,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <NavigationBar />
-      <ImageStrip />
       <Router>
         <Switch>
           <Route exact path="/" component={About} />

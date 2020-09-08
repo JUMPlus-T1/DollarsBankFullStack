@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ImageStrip from './ImageStrip';
 import {Redirect} from 'react-router-dom';
 import AccountService from '../services/AccountService';
 
@@ -43,7 +44,9 @@ class Login extends React.Component {
         };
 
         AccountService.getAccount(account);
-        
+
+        setTimeout(() => window.location.reload(false), 500); //TODO
+    
     }
 
     render() {
@@ -52,6 +55,7 @@ class Login extends React.Component {
         else {
             return (
                 <Styles>
+                    <ImageStrip />
                     <div>
                         <form onSubmit={this.handleSubmit}>
                             <div>  
@@ -81,10 +85,10 @@ class Login extends React.Component {
                                     className="btn btn-primary"
                                 >Submit</button>
                         </form>
-                            <div className="registerMessage">
-                                <span>Dont have an account? </span>
-                                <span className="loginText">Register Here!</span> 
-                            </div>
+                        <div className="registerMessage">
+                            <span>Dont have an account? </span>
+                            <span className="loginText">Register Here!</span> 
+                        </div>
                     </div>
                 </Styles>   
             )

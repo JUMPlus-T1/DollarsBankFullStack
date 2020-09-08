@@ -9,9 +9,9 @@ class AccountService {
 		axios.post(ACCOUNT_REST_API_URL + '/account', postData)
 			.then(response => {
 				console.log(response); //Handle account info to frontend
-				//localStorage.setItem('isLoggedIn', true);
+				
 				if (response.data === "") {
-					localStorage.setItem('isLoggedIn', true);
+					localStorage.setItem('isLoggedIn', false);
 					console.log("Invalid with email/password combination.");
 				}
 				else {
