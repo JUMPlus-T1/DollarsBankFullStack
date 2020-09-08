@@ -12,21 +12,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api")
 public class AccountController {
 	
 	@Autowired
 	private AccountRepository accountRepository;
 	
-	@PostMapping("account")
-	String postLogin(@RequestBody Account acct) {
-		System.out.println(acct);
+	@PostMapping("/account")
+	String loginAccount(@RequestBody Account acct) {
 		Account account = accountRepository.findByEmailPassword(acct.getEmail(), acct.getPassword());
 
 		if (account == null)
-			return "Account not found.";
+			return null;
 
 		return account.toString();
 	}
+
+	// @PostMapping("/add-account")
+	// String registerAccount(@RequestBody Account acct) {
+		
+	// 	//TODO
+
+	// 	if (account == null)
+	// 		return null;
+
+	// 	return account.toString();
+	// }
 
 }
