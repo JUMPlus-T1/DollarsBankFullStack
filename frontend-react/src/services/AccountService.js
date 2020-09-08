@@ -2,21 +2,30 @@ import axios from 'axios';
 
 const ACCOUNT_REST_API_URL = 'http://localhost:8080/api';
 
-let axiosConfig = {
-	headers: {
-		'Content-Type': 'application/json;charset=UTF-8',
-		"Access-Control-Allow-Origin": "*",
-	}
-  };
-
 class AccountService {
 	
 	
 	getAccount(postData){
-		axios.post(ACCOUNT_REST_API_URL + '/account', postData, axiosConfig)
+		axios.post(ACCOUNT_REST_API_URL + '/account', postData)
+			.then(response => {
+				console.log(response); //Handle account info to frontend
+				//localStorage.setItem('isLoggedIn', true);
+				if (response.data === "") {
+					localStorage.setItem('isLoggedIn', true);
+					console.log("Invalid with email/password combination.");
+				}
+				else {
+					localStorage.setItem('isLoggedIn', true);
+					localStorage.setItem('accountProfile', response.data);
+				}
+			});
+	}
+
+	createAccount(postData){
+		axios.post(ACCOUNT_REST_API_URL + '/add-account', postData)
 			.then(response => {
 				console.log(response);
-				console.log(response.data);
+				console.log(response.data); //Handle account info to frontend
 			});
 	}
 }

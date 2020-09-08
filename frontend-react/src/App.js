@@ -3,10 +3,11 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import ImageStrip from './components/ImageStrip';
-import Home from './components/Home';
+import Home from './components/user-menu/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Error from './components/Error';
 
 
@@ -17,11 +18,13 @@ function App() {
       <ImageStrip />
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={About} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact}/>
           <Route path="/login" component={Login}/>
-          <Route component={Error}/>
+          <Route path="/home" component={Home}/>
+          <Route path="/logout" component={Logout}/>
+          <Route path="/error" component={Error}/>
         </Switch>
       </Router>
     </div>
