@@ -13,7 +13,6 @@ const Styles = styled.div`
 export const Login = () => (
 <Styles>
     <div>
-        <h1>Hi! I'm working properly.</h1>
         <form>
             <div>  
                 <label htmlFor="exampleInputEmail1">Email address</label>
@@ -33,15 +32,16 @@ export const Login = () => (
                         placeholder="Password"/>
             </div>
             <div className="form-check"></div>
-            <button 
+                <button 
                     type="submit" 
                     className="btn btn-primary"
-                >Submit</button>
+                >Login</button>
         </form>
-            <div className="registerMessage">
-                <span>Dont have an account? </span>
-                <span className="loginText">Register Here!</span> 
-            </div>
+        
+        <div className="registerMessage">
+            <span>Dont have an account? </span>
+                <button type="submit" className="btn btn-primary">Register Here!</button>
+        </div>
     </div>
 </Styles>   
 )
