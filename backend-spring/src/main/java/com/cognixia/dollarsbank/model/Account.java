@@ -78,13 +78,13 @@ public class Account {
 		// 	", history='" + history + '\'' +
 		// 	'}';
 
-		return "{ " + "\"id\"=\"" + id + "\", " +
-			"\"name\"=\"" + name + "\", " +
-			"\"address\"=\"" + address + "\", " +
-			"\"phone\"=\"" + phone + "\", " +
-			"\"email\"=\"" + email + "\", " +
-			"\"balance\"=\"" + balance + "\", " +
-			"\"history\"=\"" + history + "\", " +
+		return "{ " + "\"id\":\"" + id + "\", " +
+			"\"name\":\"" + name + "\", " +
+			"\"address\":\"" + address + "\", " +
+			"\"phone\":\"" + phone + "\", " +
+			"\"email\":\"" + email + "\", " +
+			"\"balance\":\"" + balance + "\", " +
+			"\"history\":\"" + history + "\" " +
 			'}';
 	}
 

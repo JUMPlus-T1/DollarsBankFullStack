@@ -28,15 +28,11 @@ public class AccountController {
 		return account.toString();
 	}
 
-	// @PostMapping("/add-account")
-	// String registerAccount(@RequestBody Account acct) {
-		
-	// 	//TODO
+	@PostMapping("/add-account")
+	String registerAccount(@RequestBody Account acct) {
+		//TODO
 
-	// 	if (account == null)
-	// 		return null;
-
-	// 	return account.toString();
-	// }
+		return "TEST";
+	}
 
 }
