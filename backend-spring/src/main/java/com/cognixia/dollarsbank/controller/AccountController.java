@@ -30,9 +30,14 @@ public class AccountController {
 
 	@PostMapping("/add-account")
 	String registerAccount(@RequestBody Account acct) {
-		//TODO
-
-		return "TEST";
+		if(acct.getName() != null && acct.getAddress() != null && acct.getPhone() != null && acct.getEmail() != null && acct.getPassword() != null) {
+			Account account = new Account(acct.getName(), acct.getAddress(), acct.getPhone(), acct.getEmail(), acct.getPassword());
+            accountRepository.save(account);
+            System.out.println("New account created.");
+			System.out.println("Number of Accounts: " + accountRepository.count());
+			return "true";
+        }
+		return "false";
 	}
 
 }
