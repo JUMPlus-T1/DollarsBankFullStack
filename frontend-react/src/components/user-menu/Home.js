@@ -20,8 +20,11 @@ class Home extends React.Component {
             return (  
                 <div>
                     <h1>Hello {account.name}!</h1>
-
-                    
+                    <h2>Menu</h2>
+                    <button>Deposit</button>
+                    <button>Withdraw</button>
+                    <button>Transfer</button>
+                    <button>User Information</button>
                 </div>
             )
         } else {
