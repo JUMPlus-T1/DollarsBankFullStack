@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Withdraw extends React.Component {
 
@@ -12,11 +13,16 @@ class Withdraw extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <h1>Withdraw</h1>
-            </div>
-        )
+        if (this.state.isLoggedIn === 'true') {
+            return (
+                <div>
+                    <h1>Withdraw</h1>
+    
+                </div>
+            )
+        } else {
+            return ( <Redirect to="/error" /> )
+        }
     }
 }
 

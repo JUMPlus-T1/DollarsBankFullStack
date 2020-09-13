@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Deposit extends React.Component {
     
@@ -12,11 +13,16 @@ class Deposit extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <h1>Deposit</h1>
-            </div>
-        )
+        if (this.state.isLoggedIn === 'true') {
+            return (
+                <div>
+                    <h1>Deposit</h1>
+    
+                </div>
+            )
+        } else {
+            return ( <Redirect to="/error" /> )
+        }
     }
 }
 
