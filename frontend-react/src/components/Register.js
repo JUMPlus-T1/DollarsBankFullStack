@@ -64,16 +64,22 @@ class Register extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        let fullname = this.state.fname + ' ' + this.state.lname;
-        const account = { 
-            name: fullname,
-            address: this.state.address,
-            phone: this.state.phone,
-            email: this.state.email,
-            password: this.state.password
-        };
+        if(this.state.password === this.state.cpassword)
+        {
+            let fullname = this.state.fname + ' ' + this.state.lname;
 
-        AccountService.createAccount(account);
+            const account = { 
+                name: fullname,
+                address: this.state.address,
+                phone: this.state.phone,
+                email: this.state.email,
+                password: this.state.password
+            };
+
+            AccountService.createAccount(account);
+
+            this.props.history.push('/login');
+        }
     
     }
 

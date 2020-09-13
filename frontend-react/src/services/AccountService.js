@@ -24,8 +24,11 @@ class AccountService {
 	createAccount(postData){
 		axios.post(ACCOUNT_REST_API_URL + '/add-account', postData)
 			.then(response => {
-				console.log(response);
-				console.log(response.data); //Handle account info to frontend
+				if (response.data) {
+					console.log("New account created.")
+				}
+				else
+					console.log("Error creating account."); //Handle account info to frontend
 			});
 	}
 
