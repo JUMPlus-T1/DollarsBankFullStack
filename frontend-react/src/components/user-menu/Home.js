@@ -11,15 +11,17 @@ class Home extends React.Component {
         };
     }
 
-    componentDidMount() {
-        //fix accountprofile variable
-    }
-
     render() {
+        
+        console.log();
         if (this.state.isLoggedIn === 'true') {
+            var json = this.state.accountProfile;
+            var account = JSON.parse(json);
             return (  
                 <div>
-                    <h1>Hi {this.state.accountProfile}!</h1>
+                    <h1>Hello {account.name}!</h1>
+
+                    
                 </div>
             )
         } else {

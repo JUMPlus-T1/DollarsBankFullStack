@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ImageStrip from './ImageStrip';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AccountService from '../services/AccountService';
 
 const Styles = styled.div`
@@ -49,6 +49,10 @@ class Login extends React.Component {
     
     }
 
+    onRegister = () => {
+        this.props.history.push('/register');
+    }
+
     render() {
         if(this.state.isLoggedIn === 'true')
             return (<Redirect to="/home" />);
@@ -87,7 +91,7 @@ class Login extends React.Component {
                         </form>
                         <div className="registerMessage">
                             <span>Dont have an account? </span>
-                            <span className="loginText">Register Here!</span> 
+                            <button className="btn btn-primary" onClick={this.onRegister}>Register Here!</button>
                         </div>
                     </div>
                 </Styles>   

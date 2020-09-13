@@ -15,8 +15,8 @@ class AccountService {
 					console.log("Invalid with email/password combination.");
 				}
 				else {
+					localStorage.setItem('accountProfile', JSON.stringify(response.data));
 					localStorage.setItem('isLoggedIn', true);
-					localStorage.setItem('accountProfile', response.data);
 				}
 			});
 	}
@@ -27,6 +27,18 @@ class AccountService {
 				console.log(response);
 				console.log(response.data); //Handle account info to frontend
 			});
+	}
+
+	depositAccount(postData){
+
+	}
+
+	withdrawAccount(postData){
+		
+	}
+
+	transferAccount(postData){
+		
 	}
 }
 
