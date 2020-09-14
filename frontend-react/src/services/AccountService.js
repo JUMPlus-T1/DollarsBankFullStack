@@ -33,16 +33,48 @@ class AccountService {
 	}
 
 	depositAccount(postData){
-
+		console.log(postData);
+		axios.post(ACCOUNT_REST_API_URL + '/deposit', postData)
+			.then(response => {
+				if (response.data === "") {
+					console.log("Invalid input.");
+				}
+				else {
+					localStorage.removeItem('accountProfile');
+					localStorage.setItem('accountProfile', JSON.stringify(response.data));
+					console.log("Deposit success.");
+				}
+			});
 	}
 
 	withdrawAccount(postData){
-		
+		axios.post(ACCOUNT_REST_API_URL + '/withdraw', postData)
+			.then(response => {
+				if (response.data === "") {
+					console.log("Invalid input.");
+				}
+				else {
+					localStorage.removeItem('accountProfile');
+					localStorage.setItem('accountProfile', JSON.stringify(response.data));
+					console.log("Withdraw success.");
+				}
+			});
 	}
 
 	transferAccount(postData){
-		
+		axios.post(ACCOUNT_REST_API_URL + '/transfer', postData)
+			.then(response => {
+				if (response.data === "") {
+					console.log("Invalid transfer.");
+				}
+				else {
+					localStorage.removeItem('accountProfile');
+					localStorage.setItem('accountProfile', JSON.stringify(response.data));
+					console.log("Transfer success.");
+				}
+			});
 	}
+
 }
 
 export default new AccountService();

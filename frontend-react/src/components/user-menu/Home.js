@@ -27,6 +27,10 @@ class Home extends React.Component {
         this.props.history.push('/information');   
     }
 
+    onHistory = () => {
+        this.props.history.push('/history');   
+    }
+
     render() {
         
         console.log();
@@ -42,6 +46,7 @@ class Home extends React.Component {
                     <button onClick={this.onWithdraw}>Withdraw</button>
                     <button onClick={this.onTransfer}>Transfer</button>
                     <button onClick={this.onInformation}>User Information</button>
+                    <button onClick={this.onHistory}>Transaction History</button>
                 </div>
             )
         } else {

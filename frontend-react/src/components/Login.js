@@ -35,8 +35,7 @@ class Login extends React.Component {
         this.setState({ password: event.target.value });
     }
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = () => {
 
         const account = { 
             email: this.state.email,
@@ -45,7 +44,7 @@ class Login extends React.Component {
 
         AccountService.getAccount(account);
 
-        setTimeout(() => window.location.reload(false), 500); //TODO
+        //setTimeout(() => window.location.reload(false), 500);
     
     }
 

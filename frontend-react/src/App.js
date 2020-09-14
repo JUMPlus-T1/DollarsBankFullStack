@@ -7,6 +7,7 @@ import Deposit from './components/user-menu/Deposit';
 import Withdraw from './components/user-menu/Withdraw';
 import Transfer from './components/user-menu/Transfer';
 import Information from './components/user-menu/Information';
+import History from './components/user-menu/History';
 import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
@@ -32,6 +33,7 @@ function App() {
           <Route path="/withdraw" component={Withdraw}/>
           <Route path="/transfer" component={Transfer}/>
           <Route path="/information" component={Information}/>
+          <Route path="/history" component={History}/>
           <Route path="/error" component={Error}/>
         </Switch>
       </Router>
