@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Account {
@@ -16,6 +17,7 @@ public class Account {
 	private String email;
 	private String password;
 	double balance;
+	@Lob
 	String history;
 
 	public Account() {  }
@@ -67,16 +69,6 @@ public class Account {
 
 	@Override
 	public String toString() {
-		// return "Account{" +
-		// 	"id=" + id +
-		// 	", name='" + name + '\'' +
-		// 	", address='" + address + '\'' +
-		// 	", phone='" + phone + '\'' +
-		// 	", email='" + email + '\'' +
-		// 	", password='" + password + '\'' +
-		// 	", balance=" + balance +
-		// 	", history='" + history + '\'' +
-		// 	'}';
 
 		return "{ " + "\"id\":\"" + id + "\", " +
 			"\"name\":\"" + name + "\", " +

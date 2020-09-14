@@ -11,6 +11,26 @@ class Home extends React.Component {
         };
     }
 
+    onDeposit = () => {
+        this.props.history.push('/deposit');
+    }
+
+    onWithdraw = () => {
+        this.props.history.push('/withdraw');   
+    }
+
+    onTransfer = () => {
+        this.props.history.push('/transfer');   
+    }
+
+    onInformation = () => {
+        this.props.history.push('/information');   
+    }
+
+    onHistory = () => {
+        this.props.history.push('/history');   
+    }
+
     render() {
         
         console.log();
@@ -20,11 +40,13 @@ class Home extends React.Component {
             return (  
                 <div>
                     <h1>Hello {account.name}!</h1>
+                    <h2>Your account balance is {Number(account.balance).toFixed(2)}</h2>
                     <h2>Menu</h2>
-                    <button>Deposit</button>
-                    <button>Withdraw</button>
-                    <button>Transfer</button>
-                    <button>User Information</button>
+                    <button onClick={this.onDeposit}>Deposit</button>
+                    <button onClick={this.onWithdraw}>Withdraw</button>
+                    <button onClick={this.onTransfer}>Transfer</button>
+                    <button onClick={this.onInformation}>User Information</button>
+                    <button onClick={this.onHistory}>Transaction History</button>
                 </div>
             )
         } else {

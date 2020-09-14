@@ -40,4 +40,67 @@ public class AccountController {
 		return "false";
 	}
 
+	@PostMapping("/history")
+	String updateHistory(@RequestBody String str) {
+		return "test";
+	}
+
+
+	@PostMapping("/deposit")
+	String depositAccount(@RequestBody String input) {
+		if (input != null) {
+			String[] str = input.split("=");
+			Long id = Long.parseLong(str[0]);
+			double deposit = Double.parseDouble(str[1]);
+			if (deposit > 0) {
+				Account account = accountRepository.findAccountById(id);
+				account.setBalance(account.getBalance() + deposit);
+				accountRepository.updateBalanceById(id, account.getBalance());
+				account.setHistory(account.getHistory() + "+ $" + deposit + " on " + new java.util.Date() + "|");
+				accountRepository.updateHistoryById(id, account.getHistory());
+				return account.toString();
+			}			
+		}
+		return null;
+	}
+
+	@PostMapping("/withdraw")
+	String withdrawAccount(@RequestBody String input) {
+		if (input != null) {
+			String[] str = input.split("=");
+			Long id = Long.parseLong(str[0]);
+			double withdraw = Double.parseDouble(str[1]);
+			if (withdraw > 0) {
+				Account account = accountRepository.findAccountById(id);
+				account.setBalance(account.getBalance() - withdraw);
+				if (account.getBalance() > 0) {
+					accountRepository.updateBalanceById(id, account.getBalance());
+					account.setHistory(account.getHistory() + "- $" + withdraw + " on " + new java.util.Date() + "|");
+					accountRepository.updateHistoryById(id, account.getHistory());
+					return account.toString();
+				}				
+			}			
+		}
+		return null;
+	}
+
+	@PostMapping("/transfer")
+	String transferAccount(@RequestBody String input) {
+		if (input != null) {
+			String[] str = input.split("=");
+			String[] id = str[0].split("to");
+			String withdraw = this.withdrawAccount(id[0] + "=" + str[1]);
+			if (withdraw != null) {
+				String deposit = this.depositAccount(id[1] + "=" + str[1]);
+				if (deposit != null)
+					return withdraw;
+				else {
+					String revert = this.depositAccount(id[0] + "=" + str[1]);
+					return revert;
+				}
+			}			
+		}
+		return null;
+	}
+
 }
