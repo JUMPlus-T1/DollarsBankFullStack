@@ -9,7 +9,6 @@ import Transfer from './components/user-menu/Transfer';
 import Information from './components/user-menu/Information';
 import History from './components/user-menu/History';
 import About from './components/About';
-import Contact from './components/Contact';
 import Login from './components/Login';
 import Register from './components/Register';
 import Logout from './components/Logout';
@@ -22,9 +21,8 @@ function App() {
       <NavigationBar />
       <Router>
         <Switch>
-          <Route exact path="/" component={About} />
+          <Route exact path="/" component={Login} />
           <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact}/>
           <Route path="/login" component={Login}/>
           <Route path="/register" component={Register}/>
           <Route path="/logout" component={Logout}/>
