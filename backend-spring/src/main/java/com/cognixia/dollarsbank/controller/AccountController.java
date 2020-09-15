@@ -40,12 +40,6 @@ public class AccountController {
 		return "false";
 	}
 
-	@PostMapping("/history")
-	String updateHistory(@RequestBody String str) {
-		return "test";
-	}
-
-
 	@PostMapping("/deposit")
 	String depositAccount(@RequestBody String input) {
 		if (input != null) {
