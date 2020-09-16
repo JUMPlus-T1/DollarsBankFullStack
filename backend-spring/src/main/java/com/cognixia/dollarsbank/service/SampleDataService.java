@@ -24,16 +24,6 @@ public class SampleDataService implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//TODOs sample data
-		List<Todo> todoList = new ArrayList<Todo>();
-
-		for (int i = 1; i <= 5; i++)
-			todoList.add(new Todo("This is todo #" + i));
-
-		todoRepository.saveAll(todoList);
-
-		System.out.println("Number of Todos: " + todoRepository.count());
-
 		//Account Sample Data
 		Account account1 = new Account("John Doe","123 Street, Nowhere, USA", "(555) 555 5555", "johndoe@email.com","password");
 		accountRepository.save(account1);
