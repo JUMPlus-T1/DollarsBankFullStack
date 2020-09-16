@@ -1,5 +1,19 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import SideBar from './SideBar';
+import History from './History';
+import styled from 'styled-components';
+
+const Styles = styled.div`
+    .dash {
+        margin-left: 200px; /* Same width as the sidebar + left position in px */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    .t1 {
+        font-size: 60%;
+    }
+`;
 
 class Home extends React.Component {
     constructor(props) {
@@ -11,26 +25,6 @@ class Home extends React.Component {
         };
     }
 
-    onDeposit = () => {
-        this.props.history.push('/deposit');
-    }
-
-    onWithdraw = () => {
-        this.props.history.push('/withdraw');   
-    }
-
-    onTransfer = () => {
-        this.props.history.push('/transfer');   
-    }
-
-    onInformation = () => {
-        this.props.history.push('/information');   
-    }
-
-    onHistory = () => {
-        this.props.history.push('/history');   
-    }
-
     render() {
         
         console.log();
@@ -39,14 +33,29 @@ class Home extends React.Component {
             var account = JSON.parse(json);
             return (  
                 <div>
-                    <h1>Hello {account.name}!</h1>
-                    <h2>Your account balance is {Number(account.balance).toFixed(2)}</h2>
-                    <h2>Menu</h2>
-                    <button onClick={this.onDeposit}>Deposit</button>
-                    <button onClick={this.onWithdraw}>Withdraw</button>
-                    <button onClick={this.onTransfer}>Transfer</button>
-                    <button onClick={this.onInformation}>User Information</button>
-                    <button onClick={this.onHistory}>Transaction History</button>
+                    <SideBar/>
+                    <Styles>
+                    <div className="dash">
+                        <h1 class="h2">Dashboard</h1>
+                        <hr/>
+                        <div class="card">
+                            <h5 class="card-header"><a href="#">CHECKINGS ACCOUNT ..xx{account.id}</a></h5>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div className="t1">
+                                        Available Balance:
+                                    </div>
+                                    <div>
+                                        ${Number(account.balance).toFixed(2)}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <h1 class="h4">Transaction History</h1>
+                        <History/>
+                    </div>
+                    </Styles>
                 </div>
             )
         } else {
