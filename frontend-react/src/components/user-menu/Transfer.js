@@ -1,6 +1,19 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import AccountService from '../../services/AccountService';
+import SideBar from './SideBar';
+import styled from 'styled-components';
+
+const Styles = styled.div`
+    .dash {
+        margin-left: 200px; /* Same width as the sidebar + left position in px */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    .t1 {
+        font-size: 60%;
+    }
+`;
 
 class Contact extends React.Component {
 
@@ -33,23 +46,34 @@ class Contact extends React.Component {
         AccountService.transferAccount(str);
     }
 
-    onHome = () => {
-        this.props.history.push('/home');
-    }
-
     render() {
         if (this.state.isLoggedIn === 'true') {
             return (
                 <div>
-                    <h1>Transfer</h1>
-                    <form onSubmit={this.handleSubmit}>
-                        <label for="acct">Recipient's Account ID:</label>
-                        <input type="number" id="acct" name="acct" step="any" min="0" onChange={this.handleTransferIdChange}/>
-                        <label for="amount">Transfer amount:</label>
-                        <input type="number" id="amount" name="amount" step=".01" min="0.01" max="100000" onChange={this.handleAmountChange}/>
-                        <button>Submit</button>
-                    </form>
-                    <button onClick={this.onHome}>Back</button>
+                    <SideBar/>
+                    <Styles>
+                    <div className="dash">
+                        <h1 class="h2">Transfer</h1>
+                        <hr/>
+                        <form onSubmit={this.handleSubmit}>
+                            <div class="form-group">
+                                <label htmlFor="recipientId">Recipient's Account ID:</label>
+                                <input type="number" class="form-control" id="recipientId" aria-describedby="recipientHelp" step="any" min="0" placeholder="XXXXXXXX" onChange={this.handleTransferIdChange}/>
+                            </div>
+                            <div class="form-group">
+                                <label htmlFor="transferAmount">Transfer amount:</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                        <span class="input-group-text">0.00</span>
+                                    </div>
+                                    <input type="number" id="transferAmount" class="form-control" step=".01" min="0.01" max="100000" aria-label="Amount" onChange={this.handleAmountChange}/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                        </form>
+                    </div>
+                    </Styles>
                 </div>
             )
         } else {

@@ -50,7 +50,7 @@ public class AccountController {
 				Account account = accountRepository.findAccountById(id);
 				account.setBalance(account.getBalance() + deposit);
 				accountRepository.updateBalanceById(id, account.getBalance());
-				account.setHistory(account.getHistory() + "+ $" + deposit + " on " + new java.util.Date() + "|");
+				account.setHistory(account.getHistory() + new java.util.Date() + "%" + "DEPOSIT" + "%$" + String.format("%.2f", deposit) + "|");
 				accountRepository.updateHistoryById(id, account.getHistory());
 				return account.toString();
 			}			
@@ -69,7 +69,7 @@ public class AccountController {
 				account.setBalance(account.getBalance() - withdraw);
 				if (account.getBalance() > 0) {
 					accountRepository.updateBalanceById(id, account.getBalance());
-					account.setHistory(account.getHistory() + "- $" + withdraw + " on " + new java.util.Date() + "|");
+					account.setHistory(account.getHistory() + new java.util.Date() + "%" + "WITHDRAW" + "%$" + String.format("%.2f", withdraw) + "|");
 					accountRepository.updateHistoryById(id, account.getHistory());
 					return account.toString();
 				}				

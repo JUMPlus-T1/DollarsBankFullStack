@@ -1,5 +1,19 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import SideBar from './SideBar';
+import styled from 'styled-components';
+
+const Styles = styled.div`
+    .dash {
+        margin-left: 200px; /* Same width as the sidebar + left position in px */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    .t1 {
+        font-size: 80%;
+        padding: 20px 30px;
+    }
+`;
 
 class Information extends React.Component {
 
@@ -22,12 +36,32 @@ class Information extends React.Component {
             let account = JSON.parse(json);
             return (
                 <div>
-                    <h1>User Info</h1>
-                    <h2>Name: {account.name}</h2>
-                    <h2>Address: {account.address}</h2>
-                    <h2>Phone Number: {account.phone}</h2>
-                    <h2>Email: {account.email}</h2>
-                    <button onClick={this.onHome}>Back</button>
+                    <SideBar/>
+                    <Styles>
+                    <div className="dash">
+                        <h1 class="h2">User Information</h1>
+                        <hr/>
+                        <div className="t1">
+                            <div class="bg-light d-flex justify-content-between">
+                                <div>Name</div>
+                                <div><strong>{account.name}</strong></div>
+                            </div>
+                            <div class="bg-light d-flex justify-content-between">
+                                <div>Address</div>
+                                <div><strong>{account.address}</strong></div>
+                            </div>
+                            <div class="bg-light d-flex justify-content-between">
+                                <div>Phone Number</div>
+                                <div><strong>{account.phone}</strong></div>
+                            </div>
+                            <div class="bg-light d-flex justify-content-between">
+                                <div>Email</div>
+                                <div><strong>{account.email}</strong></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </Styles>
                 </div>
             )
         } else {

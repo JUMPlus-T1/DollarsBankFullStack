@@ -1,5 +1,11 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Styles = styled.div`
+    .t1 {
+        font-size: 60%;
+    }
+`;
 
 class History extends React.Component {
 
@@ -7,36 +13,42 @@ class History extends React.Component {
         super(props);
 
         this.state = {
-            isLoggedIn: localStorage.getItem('isLoggedIn'),
             accountProfile: localStorage.getItem('accountProfile')
         };
     }
 
-	onHome = () => {
-        this.props.history.push('/home');
-    }
 
     render() {
-        if (this.state.isLoggedIn === 'true') {
 			let json = this.state.accountProfile;
 			let account = JSON.parse(json);
-			var history = account.history.split('|');
+			var historyList = account.history.split('|');
 			const final = [];
-			for (let h of history) {
-				if (h !== '')
-					final.push(<li key={h}>{h}</li>);
+			for (let history of historyList) {
+				if (history !== ''){
+                    let h = history.split('%'); 
+                    final.push(<tr key={h}><td>{h[0]}</td><td>{h[1]}</td><td>{h[2]}</td></tr>);
+                }
+					
 			}
 
             return (
                 <div>
-                    <h1>Transaction History</h1>
-					<ul>{final}</ul>
-					<button onClick={this.onHome}>Back</button>
+                    <Styles>
+                        <table class="table table-striped table-sm" >
+                            <thead className="t1">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody className="t1">
+                                {final}
+                            </tbody>
+                        </table>
+                    </Styles>
                 </div>
             )
-        } else {
-            return ( <Redirect to="/error" /> )
-        }
     }
 }
 
