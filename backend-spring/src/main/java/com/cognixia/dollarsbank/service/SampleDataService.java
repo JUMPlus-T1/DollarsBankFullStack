@@ -1,8 +1,5 @@
 package com.cognixia.dollarsbank.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cognixia.dollarsbank.model.Account;
 import com.cognixia.dollarsbank.repository.AccountRepository;
 
